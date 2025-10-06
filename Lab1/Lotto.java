@@ -26,7 +26,6 @@ public class Lotto {
         }
         System.out.println();
     }
-    // Ver2 does not work for now :))
     public void Lotto_ver2() {
         ArrayList<Integer> lotto = new ArrayList<>();
         int randNum;
