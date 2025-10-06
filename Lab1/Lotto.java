@@ -1,9 +1,14 @@
+import java.util.ArrayList;
+
 public class Lotto {
     public static void main(String[] args) {
         Lotto loteria = new Lotto();
+        System.out.print("Version 1 of lotto: ");
         loteria.Lotto_ver1();
+        System.out.print("Version 2 of lotto: ");
+        loteria.Lotto_ver2();
     }
-    public void Lotto_ver1() { 
+    public void Lotto_ver1() {
         int[] lotto = new int[6];
         int randNum;
         for (int i = 0; i < 6; i++) {
@@ -19,25 +24,21 @@ public class Lotto {
         for (int i = 0; i < 6; i++) {
             System.out.print(lotto[i] + " ");
         }
-        System.out.print("\n");
+        System.out.println();
     }
     // Ver2 does not work for now :))
     public void Lotto_ver2() {
-        ArrayList<Integer> lotto = new ArrayList<Integer>();
+        ArrayList<Integer> lotto = new ArrayList<>();
         int randNum;
-        for (int i = 0; i < 6; i++) {
+        while (lotto.size() < 6) {
             randNum = (int) (Math.random() * 50);
-            for (int j = 0; j < i; j++) {
-                if (lotto.contains(randNum)) {
-                    randNum = (int) (Math.random() * 50);
-                    j = -1;
-                }
+            if (!lotto.contains(randNum)) {
+                lotto.add(randNum);
             }
-            lotto.add(randNum);
         }
         for (int num : lotto) {
-            System.out.println(num);
+            System.out.print(num + " ");
         }
-        System.out.print("\n");
+        System.out.println();
     }
 }
