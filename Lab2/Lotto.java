@@ -10,14 +10,16 @@ public class Lotto {
         }
         for (int i = 0; i < 6; i++) {
             int arg = Integer.parseInt(args[i]);
+            if (arg < 1 || arg > 49) {
+                System.out.println("Numbers must be between 1 and 49.");
+                return;
+            }
             if (bets.contains(arg)) {
                 System.out.println("Numbers cannot repeat.");
                 return;
             }
             bets.add(arg);
         }
-        // Sort bets for comparison with winners
-        bets.sort(null);
 
         // Generate lotto winners
         Lotto lotto = new Lotto();
@@ -29,8 +31,8 @@ public class Lotto {
             winners = lotto.Lotto();
             System.out.print("Generated numbers: ");
             System.out.println(winners);
-            winners.sort(null);
-        } while (!winners.equals(bets));
+            winners.retainAll(bets);
+        } while (winners.size() != 6);
         long stopTime =  System.currentTimeMillis();
 
         // Print results
@@ -45,7 +47,7 @@ public class Lotto {
         ArrayList<Integer> winners = new ArrayList<>();
         int randNum;
         while (winners.size() < 6) {
-            randNum = (int) (Math.random() * 50);
+            randNum = (int) (Math.random() * 50) + 1;
             if (!winners.contains(randNum)) {
                 winners.add(randNum);
             }
